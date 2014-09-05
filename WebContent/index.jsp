@@ -12,8 +12,6 @@
 	$(function()
 	{
 		drawer();
-		
-		
 		function foo()
 		{
 			this.type="small";

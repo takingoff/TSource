@@ -6,23 +6,25 @@
 <script src="hightCharts/js/jquery-1.9.1.js"></script>
 <script src="hightCharts/js/highcharts.js"></script>
 <script src="hightCharts/js/modules/exporting.js"></script>
-
 <script>
-
 	$(function()
 	{
 		drawer();
 		function foo()
 		{
-			this.type="small";
-		};
-		foo.tName="TL";
-		foo.prototype.age=21;
-		
+			this.type = "small";
+		}
+		;
+
+		foo.tName = "TL";
+		foo.prototype.age = 21;
+
 		var bar = new foo();
-		
-		
-		var tem = function myFun(){this.Tnam="tNam";};
+
+		var tem = function myFun()
+		{
+			this.Tnam = "tNam";
+		};
 	});
 
 	function drawer()

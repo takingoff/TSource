@@ -13,9 +13,7 @@
 		function foo()
 		{
 			this.type = "small";
-		}
-		;
-
+		};
 		foo.tName = "TL";
 		foo.prototype.age = 21;
 
@@ -26,7 +24,6 @@
 			this.Tnam = "tNam";
 		};
 	});
-
 	function drawer()
 	{
 		$('#container').highcharts({

@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="text/javascript">
+
 var mydata=[
             {name: '重庆市',value:  Math.round(Math.random()*1000)},
             {name: '北京市',value: Math.round(Math.random()*1000)},

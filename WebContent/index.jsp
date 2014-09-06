@@ -24,6 +24,7 @@
 			this.Tnam = "tNam";
 		};
 	});
+	
 	function drawer()
 	{
 		$('#container').highcharts({

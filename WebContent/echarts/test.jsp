@@ -13,11 +13,9 @@
 <!-- <script src="./config.js" ></script>
 <script src="./zrender/tool/event.js" ></script> -->
 <script type="text/javascript">
-
 var myChart;
 var ecConfig  ;
 var zrEvent  ;
-
 require.config({
     paths:{ 
         'ecConfig':'./config',

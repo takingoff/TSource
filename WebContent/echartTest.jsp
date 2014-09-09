@@ -12,6 +12,7 @@
 <!--Step:1 引入echarts-plain.js或者 echarts-plain-map.js-->
 <script src="echarts-plain-map.js"></script>
 <script src="static.js"></script>
+<script src="./hightCharts/js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	// Step:3 echarts & zrender as a Global Interface by the echarts-plain.js.
 	// Step:3 echarts和zrender被echarts-plain.js写入为全局接口
@@ -40,7 +41,20 @@
 		tooltip :
 		{
 			trigger : 'item',
-			formatter : '滚轮切换或点击进入该省<br/>{b}'
+// 			formatter : '滚轮切换或点击进入该省<br/>{a},{b},{c},{d}'
+				  formatter: function (params,ticket,callback) {
+						
+						$.ajax(
+						{
+							url:"myServlet",
+							success:function(data)
+							{
+			               	 callback(ticket, data);
+							}
+						});
+						
+			            return 'loading';
+			        }
 		},
 		legend :
 		{
@@ -57,7 +71,7 @@
 			max : 1000,
 			color :
 			[
-					'black', 'red'
+					'black', 'grey'
 			],
 			text :
 			[
@@ -70,7 +84,7 @@
 			{
 				name : '随机数据',
 				type : 'map',
-				mapType : 'china|四川',
+				mapType : 'china',
 				selectedMode : 'single',
 				itemStyle :
 				{
@@ -108,6 +122,7 @@
 		if (mt == 'china')
 		{
 			option.tooltip.formatter = '滚轮切换或点击进入该省<br/>{b}';
+			
 		}
 		else
 		{

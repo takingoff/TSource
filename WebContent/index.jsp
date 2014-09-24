@@ -10,6 +10,31 @@
 	$(function()
 	{
 		drawer();
+		prototypeTest();
+		arrayTest();
+		
+	});
+
+	function arrayTest()
+	{
+		var arr1 = [1,2];
+		var arr2 = [3,4];
+		
+		var arr3 = arr1.concat(arr2)
+		alert(arr3);
+		alert(arr1);
+		arr1 = [1];
+		alert(arr3);
+		
+		arr1.push(arr2);
+		alert(arr1);
+		alert(arr2);
+		alert(arr1);
+		
+	}
+	
+	function prototypeTest()
+	{
 		function foo()
 		{
 			this.type = "small";
@@ -25,8 +50,8 @@
 		{
 			this.Tnam = "tNam";
 		};
-	});
-
+	}
+	
 	function drawer()
 	{
 		$('#container').highcharts({

@@ -11,7 +11,32 @@
 	{
 		drawer();
 		prototypeTest();
-		arrayTest();
+		
+		var goo = "old";
+		hoisting();///这个函数中包含了局部变量goo因此不能改变全局变量goo
+		function hoisting()
+		{
+			if (true)
+				goo = "new";
+			else
+				var goo = "local";
+		}
+// 		alert(goo);
+
+// 		+function(i){alert(i)}("this is ");
+
+
+		function add(a,b) 
+		{ 
+		    alert(a+b); 
+		} 
+		function sub(a,b) 
+		{ 
+		    alert(a-b); 
+		} 
+		add.call(sub,3,1);
+		
+// 		alert(add.toString());
 		
 	});
 
@@ -37,21 +62,34 @@
 	{
 		function foo()
 		{
-			this.type = "small";
+			this.foofunctiontype = "small";
 		}
 		;
 
-		foo.tName = "TL";
-		foo.prototype.age = 21;
+		foo.fooName = "TL";
+		foo.prototype.fooPrototypeage = 21;
 
 		var bar = new foo();
+		bar.name = "tangli";
+		bar.jolia = "jolia";
+		console.info('name' in bar);
+		console.info('foofunctiontype' in bar);
+		console.info('fooPrototypeage' in bar);
+		console.info('fooName' in bar);
+		console.info(bar.hasOwnProperty("name"));
+		console.info(bar.hasOwnProperty("foofunctiontype"));
+		console.info(bar.hasOwnProperty("fooPrototypeage"));
+		console.info(bar.hasOwnProperty("fooName"));
+		delete bar.name;
+		console.info('name' in bar);
+		console.info(bar.hasOwnProperty("name"));
 
 		var tem = function myFun()
 		{
 			this.Tnam = "tNam";
 		};
 	}
-	
+
 	function drawer()
 	{
 		$('#container').highcharts({
@@ -79,10 +117,10 @@
 		}, subtitle : { text : 'Source: WorldClimate.com', x : -20 }, xAxis : { categories :
 		[
 				'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-		] }, yAxis : { title : { text : 'Temperature (�C)' }, plotLines :
+		] }, yAxis : { title : { text : 'Temperature (°C)' }, plotLines :
 		[
 			{ value : 0, width : 1, color : '#808080' }
-		] }, tooltip : { valueSuffix : '�C' },
+		] }, tooltip : { valueSuffix : '°C' },
 		// 	        legend: {
 		// 	            layout: 'vertical',
 		// 	            align: 'l',

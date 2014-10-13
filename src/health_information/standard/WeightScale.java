@@ -23,37 +23,5 @@ public class WeightScale
 		scaleList.add(scale3);
 	}
 	
-	static public final List<Integer> scoreList = new ArrayList<Integer>();
-	static
-	{
-		scoreList.add(80);
-		scoreList.add(100);
-		scoreList.add(80);
-		scoreList.add(60);
-	}
-	
-	static public final List<String> level = new ArrayList<String>();
-	static
-	{
-		level.add("低体重");
-		level.add("正常体重");
-		level.add("超重");
-		level.add("肥胖");
-	}
-	
-	static public int scaleRegion(WeightScale wh,Double weight)
-	{
-		
-		int region = 0;
-		for(Double scaleMax:wh.scaleList)
-		{
-			if(weight < scaleMax)
-				break;
-			else
-				region ++;
-		}
-		return region;
-	}
-	
 	
 }

@@ -12,6 +12,14 @@ public class Student
 {
 //	班级编号	班级名称	学籍号	民族代码	姓名	性别	出生日期	学生来源	身份证号	家庭住址
 	
+	
+//	体重指数（BMI）（千克/米2）
+//	肺活量（毫升）
+//	50米跑（秒）
+//	坐位体前屈(厘米）
+//	1分钟仰卧起坐(女)（次）
+///	50*8往返跑	
+	
 	public String classNo;
 	public String className;
 	public String studentCode;

@@ -4,7 +4,9 @@
  */
 package health_information.standard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -14,18 +16,6 @@ import java.util.Map;
  */
 public class WeightStandard
 {
-	///年级、男女、
-
-
-	public static final String GRADE1 = "2014";
-	public static final String GRADE2 = "2013";
-	public static final String GRADE3 = "2012";
-	public static final String GRADE4 = "2011";
-	public static final String GRADE5 = "2010";
-	public static final String GRADE6 = "2009";
-	
-	public static final String FEMALE = "男";
-	public static final String MALE = "女";
 	
 	
 //	等级	单项
@@ -47,43 +37,74 @@ public class WeightStandard
 	{
 		Map<String,WeightScale> map = new HashMap<String,WeightScale>();
 		
-		map.put(MALE, new WeightScale(13.5, 18.2, 20.4));
-		map.put(FEMALE, new WeightScale(13.3, 17.4, 19.3));
-		scaleMap.put(GRADE1, map);
+		map.put(Standard.MALE, new WeightScale(13.5, 18.2, 20.4));
+		map.put(Standard.FEMALE, new WeightScale(13.3, 17.4, 19.3));
+		scaleMap.put(Standard.GRADE1, map);
 		
 		map = new HashMap<String,WeightScale>();
-		map.put(MALE, new WeightScale(13.7, 18.5, 20.5));
-		map.put(FEMALE, new WeightScale(13.5, 17.9, 20.3));
-		scaleMap.put(GRADE2, map);
+		map.put(Standard.MALE, new WeightScale(13.7, 18.5, 20.5));
+		map.put(Standard.FEMALE, new WeightScale(13.5, 17.9, 20.3));
+		scaleMap.put(Standard.GRADE2, map);
 		
 		map = new HashMap<String,WeightScale>();
-		map.put(MALE, new WeightScale(13.9, 19.5,22.2));
-		map.put(FEMALE, new WeightScale(13.6, 18.7, 21.2));
-		scaleMap.put(GRADE3, map);
+		map.put(Standard.MALE, new WeightScale(13.9, 19.5,22.2));
+		map.put(Standard.FEMALE, new WeightScale(13.6, 18.7, 21.2));
+		scaleMap.put(Standard.GRADE3, map);
 		
 		map = new HashMap<String,WeightScale>();
-		map.put(MALE, new WeightScale(14.2, 20.2, 22.7));
-		map.put(FEMALE, new WeightScale(13.7, 19.5, 22.1));
-		scaleMap.put(GRADE4, map);
+		map.put(Standard.MALE, new WeightScale(14.2, 20.2, 22.7));
+		map.put(Standard.FEMALE, new WeightScale(13.7, 19.5, 22.1));
+		scaleMap.put(Standard.GRADE4, map);
 		
 		map = new HashMap<String,WeightScale>();
-		map.put(MALE, new WeightScale(14.4, 21.5, 24.2));
-		map.put(FEMALE, new WeightScale(13.8, 20.6, 23.0));
-		scaleMap.put(GRADE5, map);
+		map.put(Standard.MALE, new WeightScale(14.4, 21.5, 24.2));
+		map.put(Standard.FEMALE, new WeightScale(13.8, 20.6, 23.0));
+		scaleMap.put(Standard.GRADE5, map);
 		
 		map = new HashMap<String,WeightScale>();
-		map.put(MALE, new WeightScale(14.7, 21.9, 24.6));
-		map.put(FEMALE, new WeightScale(14.2, 20.9, 23.7));
-		scaleMap.put(GRADE6, map);
+		map.put(Standard.MALE, new WeightScale(14.7, 21.9, 24.6));
+		map.put(Standard.FEMALE, new WeightScale(14.2, 20.9, 23.7));
+		scaleMap.put(Standard.GRADE6, map);
 		
 	}
 	
+	static public final List<Integer> weightScoreList = new ArrayList<Integer>();
+	static
+	{
+		weightScoreList.add(80);
+		weightScoreList.add(100);
+		weightScoreList.add(80);
+		weightScoreList.add(60);
+	}
+	
+	static public final List<String> weightLevel = new ArrayList<String>();
+	static
+	{
+		weightLevel.add("低体重");
+		weightLevel.add("正常体重");
+		weightLevel.add("超重");
+		weightLevel.add("肥胖");
+	}
+	
+	static public int scaleRegion(WeightScale wh,Double weight)
+	{
+		
+		int region = 0;
+		for(Double scaleMax:wh.scaleList)
+		{
+			if(weight < scaleMax)
+				break;
+			else
+				region ++;
+		}
+		return region;
+	}
 	
 	public static void judge(double bmi,String grade,String sex)
 	{
-		int index = WeightScale.scaleRegion(WeightStandard.scaleMap.get(grade).get(sex), bmi);
-		System.out.println(WeightScale.level.get(index));
-		System.out.println(WeightScale.scoreList.get(index));
+		int index = scaleRegion(WeightStandard.scaleMap.get(grade).get(sex), bmi);
+		System.out.println(weightLevel.get(index));
+		System.out.println(weightScoreList.get(index));
 	}
 	
 	static public void main(String[] ars)

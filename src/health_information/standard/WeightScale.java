@@ -4,7 +4,7 @@
  */
 package health_information.standard;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,58 +13,47 @@ import java.util.List;
  */
 public class WeightScale
 {
-	public List<Double> scaleList = new LinkedList<Double>();
-	public Double height ;
-	public Double weight;
+	//	13.5) [13.5,18.2) [18.2,20.4)[20.4
+	public List<Double> scaleList = new ArrayList<Double>();
 	
-	public WeightScale(double height,double scale1,double scale2,double scale3,double scale4)
+	public WeightScale(double scale1,double scale2,double scale3)
 	{
-		this.height = height;
 		scaleList.add(scale1);
 		scaleList.add(scale2);
 		scaleList.add(scale3);
-		scaleList.add(scale4);
 	}
 	
-	static public final List<Integer> scoreList = new LinkedList<Integer>();
+	static public final List<Integer> scoreList = new ArrayList<Integer>();
 	static
 	{
-		scoreList.add(50);
-		scoreList.add(60);
+		scoreList.add(80);
 		scoreList.add(100);
+		scoreList.add(80);
 		scoreList.add(60);
-		scoreList.add(50);
 	}
 	
-	static public final List<String> level = new LinkedList<String>();
+	static public final List<String> level = new ArrayList<String>();
 	static
 	{
-		level.add("营养不良");
-		level.add("较低体重");
+		level.add("低体重");
 		level.add("正常体重");
-		level.add("超  重");
+		level.add("超重");
 		level.add("肥胖");
 	}
 	
-	static public int scaleRegion(WeightScale wh)
+	static public int scaleRegion(WeightScale wh,Double weight)
 	{
-		//14.8)	[14.8,16.9)	[16.9,19.2)	[19.2,19.9)	[19.9	
 		
 		int region = 0;
 		for(Double scaleMax:wh.scaleList)
 		{
-			if(wh.weight < scaleMax)
+			if(weight < scaleMax)
 				break;
 			else
 				region ++;
 		}
-		
 		return region;
-		
 	}
-	
-	
-	
 	
 	
 }

@@ -4,19 +4,14 @@
  */
 package health_information.util;
 
-import health_information.standard.EnduranceStandard;
 import health_information.standard.Run50Standard;
 import health_information.standard.SitBendStandard;
-import health_information.standard.SitupStandard;
-import health_information.standard.SkipStandard;
 import health_information.standard.Standard;
-import health_information.standard.VitalCapacityStandard;
-import health_information.standard.WeightStandard;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -25,42 +20,112 @@ import java.util.Random;
  */
 public class ValueGenerator
 {
-	public List<Integer> randomInt(String grade,String sex,int num,int indicatorType)
+	/**
+	 * @param num
+	 * @param scales
+	 * @param amendHight 超出最高成绩的允许范围
+	 * @param amendLow	  低于最低成绩的允许范围
+	 * @return
+	 */
+	public static List<Integer> generateIntValue(int num,List<Integer> scales,int amendHight,int amendLow)
 	{
-		List<Integer> result = new ArrayList<Integer>();
-		List<Integer> scales;
-		switch(indicatorType)
-		{
-		case Standard.TYPE_ENDURANCE:
-			scales = EnduranceStandard.scaleMap.get(grade).get(sex);
-			break;
-		case Standard.TYPE_SITUP:
-			scales = SitupStandard.scaleMap.get(grade).get(sex);
-			break;
-		case Standard.TYPE_SKIP :
-			scales = SkipStandard.scaleMap.get(grade).get(sex);
-			break;
-		case Standard.TYPE_VITALCAPACITY:
-			scales = VitalCapacityStandard.scaleMap.get(grade).get(sex);
-			break;
-//		case Standard.TYPE_WEIGHT:
-//			scaleMap = WeightStandard.scaleMap;
-//			break;
-		}
-		
+		///分配，三个成绩等级的个数
 		List<Integer> allocation = allocation(num);
+		List<Integer> result = new ArrayList<Integer>();
 		
-		Random rand = new Random();
-		for(int i= 0 ;i <allocation.get(0);i++)
+		//14.25 80.75  5
+		//		2] (2,4] (4,14] (14
+		if(scales.get(0)>scales.get(1))
 		{
-			result.add(rand.nextInt();)
+			result.addAll(getRandomIntData(scales.get(2), scales.get(0)+amendHight, allocation.get(0)));
+			result.addAll(getRandomIntData(scales.get(14), scales.get(2)-1, allocation.get(1)));
+			result.addAll(getRandomIntData(scales.get(19)-amendLow, scales.get(14)-1, allocation.get(2)));
+		}
+		else
+		{
+			result.addAll(getRandomIntData(scales.get(0)-amendHight, scales.get(2), allocation.get(0)));
+			result.addAll(getRandomIntData(scales.get(2)+1, scales.get(14), allocation.get(1)));
+			result.addAll(getRandomIntData(scales.get(14)+1, scales.get(19)+amendLow, allocation.get(2)));
+			
+		}
+
+		Collections.shuffle(result);
+		return result;
+	}
+	
+	/**
+	 * @param num
+	 * @param scales
+	 * @param amendHight 超出最高成绩的允许范围
+	 * @param amendLow	  低于最低成绩的允许范围
+	 * @return
+	 */
+	public static List<Double> generateDoubleValue(int num,List<Double> scales,int ratio,double amendHight,double amendLow)
+	{
+		///分配，三个成绩等级的个数
+		List<Integer> allocation = allocation(num);
+		List<Double> result = new ArrayList<Double>();
+		
+		if(scales.get(0)>scales.get(1))
+		{
+			result.addAll(getRandomDoubleData(scales.get(2), scales.get(0)+amendHight, allocation.get(0),ratio));
+			result.addAll(getRandomDoubleData(scales.get(14), scales.get(2)-1, allocation.get(1),1));
+			result.addAll(getRandomDoubleData(scales.get(19)-amendLow, scales.get(14)-1, allocation.get(2),ratio));
+		}
+		else
+		{
+			result.addAll(getRandomDoubleData(scales.get(0)-amendHight, scales.get(2), allocation.get(0),ratio));
+			result.addAll(getRandomDoubleData(scales.get(2)+1, scales.get(14), allocation.get(1),1));
+			result.addAll(getRandomDoubleData(scales.get(14)+1, scales.get(19)+amendLow, allocation.get(2),ratio));
+			
 		}
 		
-		rand.nextInt();
-		rand.nextInt();
-		rand.nextInt();
+		Collections.shuffle(result);
+		return result;
+	}
+	
+	
+	/**
+	 * @param min 包含最小值
+	 * @param max 包含最大值
+	 * @param num 个数
+	 * @return
+	 */
+	public static List<Integer> getRandomIntData(int min,int max,int num)
+	{
+		List<Integer> list = new ArrayList<Integer>();
+		Random rand = new Random();
 		
-		return null;
+		int sub = max - min;
+		
+		for(int i = 0 ; i<num ;i++)
+		{
+			//差必须要加上1.才可能包含max
+			list.add(rand.nextInt(sub+1)+min);
+		}
+		return list;
+	}
+	
+	/**
+	 * @param min
+	 * @param max
+	 * @param num
+	 * @param dotNum 小数点后的位数
+	 * @return
+	 */
+	public static List<Double> getRandomDoubleData(double min,double max,int num,int dotNum)
+	{
+		List<Double> list = new ArrayList<Double>();
+		Random rand = new Random();
+		double ratio =  Math.pow(10,dotNum);
+		double sub = max - min;
+		
+		for(int i = 0 ; i<num ;i++)
+		{
+			//差必须要加上1.才可能包含max
+			list.add(new BigDecimal(new Double(rand.nextInt((int)(sub*ratio)+1))/ratio +min).setScale(dotNum,BigDecimal.ROUND_HALF_UP).doubleValue());
+		}
+		return list;
 	}
 	
 	
@@ -85,56 +150,36 @@ public class ValueGenerator
 	}
 	
 	
-	public List<Double> randomDouble(String grade,String sex,int num,int indicatorType)
-	{
-		Map<String,Map<String,List<Double>>> scaleMap;
-		switch(indicatorType)
-		{
-		case Standard.TYPE_RUN50 :
-			scaleMap = Run50Standard.scaleMap;
-			break;
-		case Standard.TYPE_SITBEND:
-			scaleMap = SitBendStandard.scaleMap;
-			break;
-		}
-		
-//		2] (2,4] (4,14] (14
-		
-		return null;
-	}
-	
-	
-	
 	public static void main(String[] arsg)
 	{
 		
-		List<Integer> list = new ArrayList<Integer>();
 		
-		Random rand = new Random();
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-		list.add(rand.nextInt(100));
-			
+//		allocation(97);
+//		allocation(98);
+//		allocation(99);
+//		allocation(100);
+//		allocation(101);
+//		allocation(102);
+//		allocation(103);
+//		allocation(104);
+//		allocation(105);
+//		System.out.println(Math.pow(10, 2));
+//		System.out.println(getRandomIntData(0, 10, 100));
+//		System.out.println(getRandomDoubleData(0.1, 1.0, 100,1));
+//		
+//		System.out.println(getRandomIntData(-10, 10, 100));
+//		System.out.println(getRandomDoubleData(-0.5, 0.5, 100,1));
+//		System.out.println(getRandomDoubleData(13.8, 16.7, 10,1));
 		
-		System.out.println(list);
-		Collections.shuffle(list);
-		System.out.println(list);
+//		System.out.println(generateIntValue(100,VitalCapacityStandard.scaleMap.get(Standard.GRADE1).get(Standard.FEMALE),100,100));
+//		System.out.println(generateIntValue(100,SitupStandard.scaleMap.get(Standard.GRADE5).get(Standard.MALE),3,3));
+//		System.out.println(generateIntValue(100,SkipStandard.scaleMap.get(Standard.GRADE5).get(Standard.MALE),40,1));
+		
+		System.out.println(generateDoubleValue(100,SitBendStandard.scaleMap.get(Standard.GRADE5).get(Standard.MALE),1,0.2,0.2));
+		System.out.println(generateDoubleValue(100,Run50Standard.scaleMap.get(Standard.GRADE5).get(Standard.MALE),1,0.1,0.2));
 		
 		
-		allocation(97);
-		allocation(98);
-		allocation(99);
-		allocation(100);
-		allocation(101);
-		allocation(102);
-		allocation(103);
-		allocation(104);
-		allocation(105);
+		
 	}
 }
 

@@ -4,6 +4,8 @@
  */
 package health_information.standard;
 
+import health_information.model.SingleIndicator;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,5 +127,30 @@ public static Map<String,Map<String,List<Integer>>> scaleMap = new HashMap<Strin
 		}
 		return index;
 	}
-
+	
+	public static int getExtra(int value, String grade, String sex)
+	{
+		int score =0;
+		int more = value - scaleMap.get(grade).get(sex).get(0);
+		if(more>40)
+			score = 20;
+		else if(more>0)
+			score = more/2;
+		return score;
+	}
+	
+	public static SingleIndicator judge(int value,String grade ,String sex)
+	{
+		SingleIndicator si = new SingleIndicator();
+		
+		int index = getRegion(value,grade,sex);
+		si.valueInt = value; 
+		si.level = Standard.getLevel(index);
+		si.score = Standard.getScore(index);
+		si.extraScore = getExtra(value, grade, sex);
+		
+		return si;
+		
+	}
+	
 }

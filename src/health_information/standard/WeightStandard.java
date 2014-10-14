@@ -4,6 +4,8 @@
  */
 package health_information.standard;
 
+import health_information.model.SingleIndicator;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -124,7 +126,18 @@ public class WeightStandard
 		
 	}
 
-	
+	public static SingleIndicator judge(Double value,String grade ,String sex)
+	{
+		SingleIndicator si = new SingleIndicator();
+		
+		int index = getRegion(value,grade,sex);
+		si.valueDouble = value; 
+		si.level = Standard.getLevel(index);
+		si.score = Standard.getScore(index);
+		
+		return si;
+		
+	}
 
 	
 	

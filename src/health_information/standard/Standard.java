@@ -5,6 +5,8 @@
  */
 package health_information.standard;
 
+import health_information.model.SingleIndicator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,6 @@ import java.util.List;
  */
 public abstract class Standard
 {
-	
-	
 	///年级、男女、
 	public static final String GRADE1 = "2014";
 	public static final String GRADE2 = "2013";
@@ -82,6 +82,7 @@ public abstract class Standard
 		return Standard.standardLevels.get(3);//不及格
 	}
 	
+	
 	public static void main(String[] args)
 	{
 //		System.out.println(VitalCapacityStandard.scaleMap.get(GRADE6).get(FEMALE));
@@ -99,14 +100,19 @@ public abstract class Standard
 		
 //		System.out.println(getLevel(SkipStandard.getRegion(90, GRADE3,MALE)));
 //		System.out.println(getScore(SkipStandard.getRegion(90, GRADE3,MALE)));
+//		System.out.println(SkipStandard.getExtra(179, GRADE4,FEMALE));
 		
 //		System.out.println(getLevel(SitupStandard.getRegion(39, GRADE4,MALE)));
 //		System.out.println(getScore(SitupStandard.getRegion(39, GRADE4,MALE)));
 		
-		System.out.println(getLevel(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
-		System.out.println(getScore(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
+//		System.out.println(getLevel(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
+//		System.out.println(getScore(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
 		
 		
+		
+		SingleIndicator si = EnduranceStandard.judge(142, GRADE5, FEMALE);
+		System.out.println(si.valueDouble);
+		System.out.println(si.valueInt);
 		
 		
 	}

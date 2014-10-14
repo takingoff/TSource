@@ -10,99 +10,25 @@ package health_information.model;
  */
 public class Student
 {
-//	班级编号	班级名称	学籍号	民族代码	姓名	性别	出生日期	学生来源	身份证号	家庭住址
+
+	public SingleIndicator weightResult;
+	public SingleIndicator vitalCapacityResult;
+	public SingleIndicator run50Result;
+	public SingleIndicator sitBendResult;
+	public SingleIndicator skipResult;
+	public SingleIndicator situpResult;
+	public SingleIndicator enduranceResult;
 	
-	
-//	体重指数（BMI）（千克/米2）
-//	肺活量（毫升）
-//	50米跑（秒）
-//	坐位体前屈(厘米）
-//	1分钟仰卧起坐(女)（次）
-///	50*8往返跑	
-	
-	public String classNo;
-	public String className;
-	public String studentCode;
-	public String nativeCode;
+	public String classNo;//班级编号
+	public String className;//班全名
+	public String studentCode;//学籍号
+	public String nativeCode;//名族
 	public String name;
+	public String sex;
 	public String birthday;
-	public String origin;
-	public String idCard;
-	public String address;
-	
-	public String getClassNo()
-	{
-		return classNo;
-	}
-	public void setClassNo(String classNo)
-	{
-		this.classNo = classNo;
-	}
-	public String getClassName()
-	{
-		return className;
-	}
-	public void setClassName(String className)
-	{
-		this.className = className;
-	}
-	public String getStudentCode()
-	{
-		return studentCode;
-	}
-	public void setStudentCode(String studentCode)
-	{
-		this.studentCode = studentCode;
-	}
-	public String getNativeCode()
-	{
-		return nativeCode;
-	}
-	public void setNativeCode(String nativeCode)
-	{
-		this.nativeCode = nativeCode;
-	}
-	public String getName()
-	{
-		return name;
-	}
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-	public String getBirthday()
-	{
-		return birthday;
-	}
-	public void setBirthday(String birthday)
-	{
-		this.birthday = birthday;
-	}
-	public String getOrigin()
-	{
-		return origin;
-	}
-	public void setOrigin(String origin)
-	{
-		this.origin = origin;
-	}
-	public String getIdCard()
-	{
-		return idCard;
-	}
-	public void setIdCard(String idCard)
-	{
-		this.idCard = idCard;
-	}
-	public String getAddress()
-	{
-		return address;
-	}
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
-	
+	public String origin;//来源
+	public String idCard;//身份证
+	public String address;//家庭住址
 	
 	
 	

@@ -4,6 +4,8 @@
  */
 package health_information.standard;
 
+import health_information.model.SingleIndicator;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -113,4 +115,16 @@ public static Map<String,Map<String,List<Integer>>> scaleMap = new HashMap<Strin
 		return index;
 	}
 
+	public static SingleIndicator judge(int value,String grade ,String sex)
+	{
+		SingleIndicator si = new SingleIndicator();
+		
+		int index = getRegion(value,grade,sex);
+		si.valueInt = value; 
+		si.level = Standard.getLevel(index);
+		si.score = Standard.getScore(index);
+		
+		return si;
+		
+	}
 }

@@ -27,6 +27,13 @@ public abstract class Standard
 	public static final String FEMALE = "男";
 	public static final String MALE = "女";
 	
+	public static final int TYPE_RUN50 = 0;
+	public static final int TYPE_ENDURANCE = 1;
+	public static final int TYPE_SITBEND = 2;
+	public static final int TYPE_SITUP = 3;
+	public static final int TYPE_SKIP= 4;
+	public static final int TYPE_VITALCAPACITY= 5;
+	public static final int TYPE_WEIGHT = 6;
 	
 	/**
 	 * 100分 -- 10分 共20个档次
@@ -114,6 +121,8 @@ public abstract class Standard
 		System.out.println(si.valueDouble);
 		System.out.println(si.valueInt);
 		
+		
+		System.out.println(new Double(15)/10);
 		
 	}
 	

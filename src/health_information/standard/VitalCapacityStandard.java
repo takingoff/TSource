@@ -14,7 +14,7 @@ import java.util.Map;
  * @author TangLi
  * 2014年10月13日下午9:32:47
  */
-public class VitalCapacityStandard extends Standard
+public class VitalCapacityStandard
 {
 	
 	public static Map<String,Map<String,List<Integer>>> scaleMap = new HashMap<String,Map<String,List<Integer>>>();
@@ -115,21 +115,17 @@ public class VitalCapacityStandard extends Standard
 		
 	}
 	
-
-
-	@Override
-	public int getRegion(int value, String grade, String sex)
+	public static int getRegion(int value, String grade, String sex)
 	{
 		int index =0;
 		for(int scale:scaleMap.get(grade).get(sex))
 		{
-			if(value>scale)
+			if(value>=scale)
 				break;
 			else
 				index++;
 		}
 		return index;
 	}
-	
-	
+
 }

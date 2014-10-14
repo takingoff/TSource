@@ -32,7 +32,7 @@ public class WeightStandard
 //	超重		17.4~19.2	17.9~20.2	18.7~21.1	19.5~22.0	20.6~22.9	20.9~23.6
 //	肥胖	60	≥19.3		≥20.3		≥21.2		≥22.1		≥23.0		≥23.7
 	
-	public static Map<String,Map<String,WeightScale>> scaleMap = new HashMap<String,Map<String,WeightScale>>();
+	public static final Map<String,Map<String,WeightScale>> scaleMap = new HashMap<String,Map<String,WeightScale>>();
 	static
 	{
 		Map<String,WeightScale> map = new HashMap<String,WeightScale>();
@@ -77,22 +77,22 @@ public class WeightStandard
 		weightScoreList.add(60);
 	}
 	
-	static public final List<String> weightLevel = new ArrayList<String>();
+	static public final List<String> weightLevelList = new ArrayList<String>();
 	static
 	{
-		weightLevel.add("低体重");
-		weightLevel.add("正常体重");
-		weightLevel.add("超重");
-		weightLevel.add("肥胖");
+		weightLevelList.add("低体重");
+		weightLevelList.add("正常体重");
+		weightLevelList.add("超重");
+		weightLevelList.add("肥胖");
 	}
 	
-	static public int scaleRegion(WeightScale wh,Double weight)
+	
+	public static int getRegion(Double value, String grade, String sex)
 	{
-		
 		int region = 0;
-		for(Double scaleMax:wh.scaleList)
+		for(Double scaleMax:scaleMap.get(grade).get(sex).scaleList)
 		{
-			if(weight < scaleMax)
+			if(value < scaleMax)
 				break;
 			else
 				region ++;
@@ -100,21 +100,32 @@ public class WeightStandard
 		return region;
 	}
 	
-	public static void judge(double bmi,String grade,String sex)
+	public static int getScore(Double value, String grade, String sex)
 	{
-		int index = scaleRegion(WeightStandard.scaleMap.get(grade).get(sex), bmi);
-		System.out.println(weightLevel.get(index));
-		System.out.println(weightScoreList.get(index));
+		int index = getRegion(value,grade,sex);
+		index = index>=weightScoreList.size()?(weightScoreList.size()-1):index;
+		return weightScoreList.get(index);
 	}
-	
+
+	public static String getLevel(Double value, String grade, String sex)
+	{
+		int index = getRegion(value,grade,sex);
+		index = index>=weightLevelList.size()?(weightLevelList.size()-1):index;
+		return weightLevelList.get(index);
+	}
+
+
 	static public void main(String[] ars)
 	{
 		
 //		System.out.println(weightStandar.get(GRADE3).get(MALE).scaleList);
+		System.out.println(getScore(12.7,"2012","男"));
+		System.out.println(getLevel(12.7,"2012","男"));
 		
-		
-		judge(12.7,"2012","男");
 	}
+
+	
+
 	
 	
 }

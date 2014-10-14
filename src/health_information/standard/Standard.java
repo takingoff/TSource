@@ -31,65 +31,84 @@ public abstract class Standard
 	/**
 	 * 100分 -- 10分 共20个档次
 	 */
-	public static List<Integer> scores = new ArrayList<Integer>();
+	public static final List<Integer> standardScores = new ArrayList<Integer>();
 	static 
 	{
-		scores.add(100);
-		scores.add(95 );
-		scores.add(90 );
-		scores.add(85 );
-		scores.add(80 );
-		scores.add(78 );
-		scores.add(76 );
-		scores.add(74 );
-		scores.add(72 );
-		scores.add(70 );
-		scores.add(68 );
-		scores.add(66 );
-		scores.add(64 );
-		scores.add(62 );
-		scores.add(60 );
-		scores.add(50 );
-		scores.add(40 );
-		scores.add(30 );
-		scores.add(20 );
-		scores.add(10 );
+		standardScores.add(100);
+		standardScores.add(95 );
+		standardScores.add(90 );
+		standardScores.add(85 );
+		standardScores.add(80 );
+		standardScores.add(78 );
+		standardScores.add(76 );
+		standardScores.add(74 );
+		standardScores.add(72 );
+		standardScores.add(70 );
+		standardScores.add(68 );
+		standardScores.add(66 );
+		standardScores.add(64 );
+		standardScores.add(62 );
+		standardScores.add(60 );
+		standardScores.add(50 );
+		standardScores.add(40 );
+		standardScores.add(30 );
+		standardScores.add(20 );
+		standardScores.add(10 );
 	}
 	
-	
-	static public final List<String> levels = new ArrayList<String>();
+	static public final List<String> standardLevels = new ArrayList<String>();
 	static
 	{
-		levels.add("优秀");
-		levels.add("良好");
-		levels.add("及格");
-		levels.add("不及格");
+		standardLevels.add("优秀");
+		standardLevels.add("良好");
+		standardLevels.add("及格");
+		standardLevels.add("不及格");
 	}
 	
-	
-	
-	public abstract int getRegion(int value,String grade,String sex);
-	
-	public int getScore(int value, String grade, String sex)
+	public static int getScore(int index)
 	{
-		return Standard.scores.get(getRegion(value, grade, sex));
+		return Standard.standardScores.get((index>=standardScores.size()?standardScores.size()-1:index));
 	}
 
-	public String getLevel(int value, String grade, String sex)
+	public static String getLevel(int index)
 	{
-		if(getRegion(value, grade, sex)<3)
-			return Standard.levels.get(0);//优秀
-		if(getRegion(value, grade, sex)<5)
-			return Standard.levels.get(1);//良好
-		if(getRegion(value, grade, sex)<3)
-			return Standard.levels.get(2);//及格
+		if(index<3)
+			return Standard.standardLevels.get(0);//优秀
+		if(index<5)
+			return Standard.standardLevels.get(1);//良好
+		if(index<15)
+			return Standard.standardLevels.get(2);//及格
 		
-		return Standard.levels.get(3);//不及格
+		return Standard.standardLevels.get(3);//不及格
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println(VitalCapacityStandard.scaleMap.get(GRADE6).get(FEMALE));
+//		System.out.println(VitalCapacityStandard.scaleMap.get(GRADE6).get(FEMALE));
+		
+//		System.out.println(getLevel(VitalCapacityStandard.getRegion(1580, GRADE4, MALE)));
+//		System.out.println(getScore(VitalCapacityStandard.getRegion(1580, GRADE4, MALE)));
+		
+//		System.out.println(getLevel(Run50Standard.getRegion(19.9, GRADE3, MALE)));
+//		System.out.println(getScore(Run50Standard.getRegion(19.9, GRADE3, MALE)));
+		
+		
+//		System.out.println(getLevel(SitBendStandard.getRegion(13.1, GRADE3, FEMALE)));
+//		System.out.println(getScore(SitBendStandard.getRegion(13.1, GRADE3, FEMALE)));
+		
+		
+//		System.out.println(getLevel(SkipStandard.getRegion(90, GRADE3,MALE)));
+//		System.out.println(getScore(SkipStandard.getRegion(90, GRADE3,MALE)));
+		
+//		System.out.println(getLevel(SitupStandard.getRegion(39, GRADE4,MALE)));
+//		System.out.println(getScore(SitupStandard.getRegion(39, GRADE4,MALE)));
+		
+		System.out.println(getLevel(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
+		System.out.println(getScore(EnduranceStandard.getRegion(142, GRADE5,FEMALE)));
+		
+		
+		
+		
 	}
 	
 	

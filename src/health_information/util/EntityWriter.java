@@ -9,8 +9,7 @@ import health_information.model.Student;
 import java.util.List;
 
 /**
- * @author TangLi
- * 2014年10月15日下午4:36:37
+ * @author TangLi 2014年10月15日下午4:36:37
  */
 public class EntityWriter implements IEntityWriter
 {
@@ -18,25 +17,16 @@ public class EntityWriter implements IEntityWriter
 	public void writeToWord(List<Student> entityList)
 	{
 
-		for(Student s:entityList)
+		for (Student s : entityList)
 		{
 			System.out.println(s.toString());
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	public static void main(String[] ars)
+	public static void main(String[] args) throws Exception
 	{
 		
-		
+//		HWPFDocument ds;
 	}
-	
-	
-	
-	
+
 }

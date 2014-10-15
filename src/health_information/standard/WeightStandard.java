@@ -34,6 +34,8 @@ public class WeightStandard
 //	超重		17.4~19.2	17.9~20.2	18.7~21.1	19.5~22.0	20.6~22.9	20.9~23.6
 //	肥胖	60	≥19.3		≥20.3		≥21.2		≥22.1		≥23.0		≥23.7
 	
+	
+	//////// 13.5) [13.5,18.2) [18.20.4) [20.4
 	public static final Map<String,Map<String,WeightScale>> scaleMap = new HashMap<String,Map<String,WeightScale>>();
 	static
 	{

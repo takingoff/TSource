@@ -104,29 +104,19 @@ public class WeightStandard
 		return region;
 	}
 	
-	public static int getScore(Double value, String grade, String sex)
+	public static int getScore(int index)
 	{
-		int index = getRegion(value,grade,sex);
 		index = index>=weightScoreList.size()?(weightScoreList.size()-1):index;
 		return weightScoreList.get(index);
 	}
 
-	public static String getLevel(Double value, String grade, String sex)
+	public static String getLevel(int index)
 	{
-		int index = getRegion(value,grade,sex);
 		index = index>=weightLevelList.size()?(weightLevelList.size()-1):index;
 		return weightLevelList.get(index);
 	}
 
 
-	static public void main(String[] ars)
-	{
-		
-//		System.out.println(weightStandar.get(GRADE3).get(MALE).scaleList);
-		System.out.println(getScore(12.7,"2012","男"));
-		System.out.println(getLevel(12.7,"2012","男"));
-		
-	}
 
 	public static SingleIndicator judge(Double value,String grade ,String sex)
 	{
@@ -134,8 +124,8 @@ public class WeightStandard
 		
 		int index = getRegion(value,grade,sex);
 		si.valueDouble = value; 
-		si.level = Standard.getLevel(index);
-		si.score = Standard.getScore(index);
+		si.level = getLevel(index);
+		si.score = getScore(index);
 		
 		return si;
 		

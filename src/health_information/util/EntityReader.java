@@ -38,7 +38,7 @@ public class EntityReader implements IEntityReader
 		Random rand = new Random();
 		
 		
-		for(int i = 0 ;i <100;i++)
+		for(int i = 0 ;i <1600;i++)
 		{
 			list.add(new Student("classNO"+i,grade.get(rand.nextInt(100)%6)+"className"+i,"code"+i,"nativeCode","name"+i,sex.get(rand.nextInt(100)%2),"birthDay"+i,"origin"+i,"idcard"+i,"address"+i));
 			

@@ -24,4 +24,19 @@ public class EntityWriter implements IEntityWriter
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	public static void main(String[] ars)
+	{
+		
+		
+	}
+	
+	
+	
+	
 }

@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface IEntityReader
 {
-	public List<Student> readFromExcel(String filePath);
+	public List<Student> read(String filePath);
 	
 }

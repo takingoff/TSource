@@ -1,0 +1,36 @@
+/**
+ *	2014年10月15日 下午8:34:38
+ *	TangLi
+ *	Start.java
+ */
+package health_information;
+
+import health_information.model.Student;
+import health_information.util.EntityReader;
+import health_information.util.EntityWriter;
+import health_information.util.IEntityReader;
+import health_information.util.IEntityWriter;
+import health_information.util.KernelProcess;
+
+import java.util.List;
+
+/**
+ * @author TangLi
+ * 2014年10月15日下午8:34:38
+ */
+public class Start
+{
+	public static void main(String[] arg)
+	{
+		IEntityReader reader = new EntityReader();
+		List<Student> students = reader.read("C:\\Users\\TangLi\\Desktop\\学生基本信息模版.xls");
+			
+		///..process
+		KernelProcess.process(students);
+		
+		
+		IEntityWriter writer = new EntityWriter();
+		writer.writeToWord(students);
+		
+	}
+}

@@ -17,6 +17,10 @@ public class SingleIndicator
 	
 	public int extraScore;//跳绳额外加分。
 
-	
-	
+	@Override
+	public String toString()
+	{
+		return "SingleIndicator [valueDouble=" + valueDouble + ", valueInt=" + valueInt + ", score=" + score + ", level=" + level + ", extraScore=" + extraScore + "]";
+	}
+
 }

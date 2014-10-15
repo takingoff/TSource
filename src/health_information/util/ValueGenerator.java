@@ -272,6 +272,9 @@ public class ValueGenerator
 		
 //		System.out.println(getWeightData(WeightStandard.scaleMap.get(Standard.GRADE1).get(Standard.MALE),100));
 //		System.out.println(generateEnduranceData(EnduranceStandard.scaleMap.get(Standard.GRADE5).get(Standard.MALE),100));
+		
+		
+		
 	}
 	
 	

@@ -101,11 +101,12 @@ public class DOCWriter
 		if (this.word == null)
 		{
 			/* 初始化应用所要用到的对象实例 */
-			this.word = new ActiveXComponent("Word.Application");
+			this.word = new ActiveXComponent("Word.Application.11");
+//			this.word = new ActiveXComponent("Word.Application");
 			/* 设置Word文档是否可见，true-可见false-不可见 */
 			this.word.setProperty("Visible", new Variant(true));
 			/* 禁用宏 */
-			this.word.setProperty("AutomationSecurity", new Variant(3));
+//			this.word.setProperty("AutomationSecurity", new Variant(3));
 		}
 		if (this.documents == null)
 		{
@@ -113,6 +114,47 @@ public class DOCWriter
 		}
 	}
 
+	
+	/**
+	 * 打开文件
+	 * 
+	 * @param inputDoc
+	 *            要打开的文件，全路径
+	 * @return Dispatch 打开的文件
+	 */
+	public Dispatch openDocument(String inputDoc)
+	{
+
+		logger.debug("打开Word文档...");
+		this.document = Dispatch.call(documents, "Open", inputDoc).toDispatch();
+		this.getSelection();
+		this.getRange();
+		this.getAlignment();
+		this.getFont();
+		this.getPageSetup();
+		return this.document;
+	}
+	
+	
+	/**
+	 * 创建新的文件
+	 * 
+	 * @return Dispache 返回新建文件
+	 */
+	public Dispatch createNewDocument()
+	{
+
+		logger.debug("创建新的文件...");
+		this.document = Dispatch.call(documents, "Add").toDispatch();
+		this.getSelection();
+		this.getRange();
+		this.getPageSetup();
+		this.getAlignment();
+		this.getFont();
+		return this.document;
+	}
+	
+	
 	/**
 	 * 设置页面方向和页边距
 	 * 
@@ -160,43 +202,7 @@ public class DOCWriter
 		return this.pageSetup;
 	}
 
-	/**
-	 * 打开文件
-	 * 
-	 * @param inputDoc
-	 *            要打开的文件，全路径
-	 * @return Dispatch 打开的文件
-	 */
-	public Dispatch openDocument(String inputDoc)
-	{
-
-		logger.debug("打开Word文档...");
-		this.document = Dispatch.call(documents, "Open", inputDoc).toDispatch();
-		this.getSelection();
-		this.getRange();
-		this.getAlignment();
-		this.getFont();
-		this.getPageSetup();
-		return this.document;
-	}
-
-	/**
-	 * 创建新的文件
-	 * 
-	 * @return Dispache 返回新建文件
-	 */
-	public Dispatch createNewDocument()
-	{
-
-		logger.debug("创建新的文件...");
-		this.document = Dispatch.call(documents, "Add").toDispatch();
-		this.getSelection();
-		this.getRange();
-		this.getPageSetup();
-		this.getAlignment();
-		this.getFont();
-		return this.document;
-	}
+	
 
 	/**
 	 * 选定内容
@@ -1075,7 +1081,7 @@ public class DOCWriter
 		writer.moveDown(3);
 		writer.setAlignment(0);
 		writer.setTitle("Test");
-		writer.insertImage("E://test.jpg");
+		writer.insertImage("C:\\Users\\TangLi\\Desktop\\ww\\13.jpg");
 		writer.enterDown(1);
 		writer.insertToDocument(list);
 		writer.setFontScale("幼圆", true, true, true, "1,1,1,1", 70, 14);
@@ -1086,8 +1092,8 @@ public class DOCWriter
 		writer.insertToTable(listTable);
 		writer.setFontScale("华文新魏", true, false, false, "100,1,1,1", 70, 14);
 		writer.insertToDocument(list);
-		// writer.saveAsHtml("E://test.html");
-		writer.saveAs("E://TestDocBenjamin.doc");
+		 writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
+//		writer.saveAs("C:\\Users\\TangLi\\Desktop\\ww\\aa.doc");
 		// writer.close();
 	}
 

@@ -1081,7 +1081,8 @@ public class DOCWriter
 		writer.moveDown(3);
 		writer.setAlignment(0);
 		writer.setTitle("Test");
-		writer.insertImage("C:\\Users\\TangLi\\Desktop\\ww\\13.jpg");
+		writer.setTitle("Test2");
+		writer.insertImage("C:\\Users\\TangLi\\Desktop\\desktop\\13.jpg");
 		writer.enterDown(1);
 		writer.insertToDocument(list);
 		writer.setFontScale("幼圆", true, true, true, "1,1,1,1", 70, 14);
@@ -1092,9 +1093,9 @@ public class DOCWriter
 		writer.insertToTable(listTable);
 		writer.setFontScale("华文新魏", true, false, false, "100,1,1,1", 70, 14);
 		writer.insertToDocument(list);
-		 writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
-//		writer.saveAs("C:\\Users\\TangLi\\Desktop\\ww\\aa.doc");
-		// writer.close();
+//		 writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
+		writer.saveAs("C:\\Users\\TangLi\\Desktop\\desktop\\aa.doc");
+//		 writer.close();
 	}
 
 }

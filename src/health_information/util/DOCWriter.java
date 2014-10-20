@@ -1157,6 +1157,8 @@ public class DOCWriter
 		// writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
 		writer.saveAs("C:\\Users\\TangLi\\Desktop\\desktop\\aa.doc");
 		// writer.close();
+		
+		writer.copyContentFromAnotherDoc("C:\\Users\\TangLi\\Desktop\\dd.docx");
 	}
 
 }

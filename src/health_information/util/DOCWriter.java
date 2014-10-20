@@ -102,11 +102,11 @@ public class DOCWriter
 		{
 			/* 初始化应用所要用到的对象实例 */
 			this.word = new ActiveXComponent("Word.Application.11");
-//			this.word = new ActiveXComponent("Word.Application");
+			// this.word = new ActiveXComponent("Word.Application");
 			/* 设置Word文档是否可见，true-可见false-不可见 */
 			this.word.setProperty("Visible", new Variant(true));
 			/* 禁用宏 */
-//			this.word.setProperty("AutomationSecurity", new Variant(3));
+			// this.word.setProperty("AutomationSecurity", new Variant(3));
 		}
 		if (this.documents == null)
 		{
@@ -114,7 +114,6 @@ public class DOCWriter
 		}
 	}
 
-	
 	/**
 	 * 打开文件
 	 * 
@@ -134,8 +133,7 @@ public class DOCWriter
 		this.getPageSetup();
 		return this.document;
 	}
-	
-	
+
 	/**
 	 * 创建新的文件
 	 * 
@@ -153,8 +151,7 @@ public class DOCWriter
 		this.getFont();
 		return this.document;
 	}
-	
-	
+
 	/**
 	 * 设置页面方向和页边距
 	 * 
@@ -185,7 +182,7 @@ public class DOCWriter
 		Dispatch.put(pageSetup, "TopMargin", topMargin);
 		Dispatch.put(pageSetup, "BottomMargin", buttomMargin);
 	}
-	
+
 	/**
 	 * 获得当前文档的文档页面属性
 	 */
@@ -201,8 +198,6 @@ public class DOCWriter
 		this.pageSetup = Dispatch.get(this.document, "PageSetup").toDispatch();
 		return this.pageSetup;
 	}
-
-	
 
 	/**
 	 * 选定内容
@@ -235,7 +230,17 @@ public class DOCWriter
 		return this.range;
 	}
 
-	
+	/**
+	 * 把插入点移动到文件最底部
+	 * 
+	 */
+	public void moveEnd()
+	{
+		logger.debug("把选定内容或插入点移向最底部...");
+		if (selection == null)
+			selection = Dispatch.get(word, "Selection").toDispatch();
+		Dispatch.call(selection, "EndKey", new Variant(6));
+	}
 
 	/**
 	 * 把选定内容或插入点向上移动
@@ -1052,6 +1057,62 @@ public class DOCWriter
 		ComThread.Release();
 	}
 
+	// 复制当前word所有内容到剪贴板
+	public void copyWordContent()
+	{
+		Dispatch textRange = Dispatch.get(document, "Content").toDispatch(); // 取得当前文档的内容
+		Dispatch.call(textRange, "Copy");
+	}
+
+	/**
+	 * 在当前文档末尾拷贝来自另一个文档中的所有内容 *
+	 * 
+	 * @param anotherDocPath
+	 *            另一个文档的磁盘路径
+	 */
+	public void copyContentFromAnotherDoc(String anotherDocPath)
+	{
+		Dispatch wordContent = Dispatch.get(document, "Content").toDispatch(); // 取得当前文档的内容
+		Dispatch.call(wordContent, "InsertAfter", "$selection$");// 插入特殊符定位插入点
+		copyContentFromAnotherDoc(anotherDocPath, "$selection$");
+	}
+
+	/**
+	 * 在当前文档拷贝来自另一个文档中的所有内容 *
+	 * 
+	 * @param anotherDocPath
+	 *            另一个文档的磁盘路径
+	 * @param pos
+	 *            当前文档指定的位置
+	 */
+	public void copyContentFromAnotherDoc(String anotherDocPath, String pos)
+	{
+		Dispatch doc2 = null;
+		try
+		{
+			doc2 = Dispatch.call(documents, "Open", anotherDocPath).toDispatch();
+			Dispatch range = Dispatch.get(doc2, "Content").toDispatch(); // 取得当前文档的内容
+			Dispatch.call(range, "Copy");
+			if (this.find(pos))
+			{
+				Dispatch textRange = Dispatch.get(selection, "Range").toDispatch();
+				Dispatch.call(textRange, "Paste");
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if (doc2 != null)
+			{
+//				Dispatch.call(doc2, "Close", new Variant(saveOnExit));
+				doc2 = null;
+			}
+		}
+	}
+
 	public static void main(String args[])
 	{
 		DOCWriter writer = new DOCWriter();
@@ -1093,9 +1154,9 @@ public class DOCWriter
 		writer.insertToTable(listTable);
 		writer.setFontScale("华文新魏", true, false, false, "100,1,1,1", 70, 14);
 		writer.insertToDocument(list);
-//		 writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
+		// writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
 		writer.saveAs("C:\\Users\\TangLi\\Desktop\\desktop\\aa.doc");
-//		 writer.close();
+		// writer.close();
 	}
 
 }

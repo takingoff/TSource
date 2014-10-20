@@ -321,6 +321,7 @@ public class WordHandle
                             .toDispatch(); 
             Dispatch range = Dispatch.get(table, "Range").toDispatch(); 
             Dispatch.call(range, "Copy"); 
+            
             Dispatch textRange = Dispatch.get(cursor, "Range").toDispatch(); 
             Dispatch.call(textRange, "Paste"); 
     } 

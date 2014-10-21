@@ -1,6 +1,5 @@
 package health_information.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -1072,9 +1071,9 @@ public class DOCWriter
 	 */
 	public void copyContentFromAnotherDoc(String anotherDocPath)
 	{
-		Dispatch wordContent = Dispatch.get(document, "Content").toDispatch(); // 取得当前文档的内容
-		Dispatch.call(wordContent, "InsertAfter", "$selection$");// 插入特殊符定位插入点
-		copyContentFromAnotherDoc(anotherDocPath, "$selection$");
+//		Dispatch wordContent = Dispatch.get(document, "Content").toDispatch(); // 取得当前文档的内容
+//		Dispatch.call(wordContent, "InsertAfter", "#selection#");// 插入特殊符定位插入点
+		copyContentFromAnotherDoc(anotherDocPath, "#selection#");
 	}
 
 	/**
@@ -1093,11 +1092,12 @@ public class DOCWriter
 			doc2 = Dispatch.call(documents, "Open", anotherDocPath).toDispatch();
 			Dispatch range = Dispatch.get(doc2, "Content").toDispatch(); // 取得当前文档的内容
 			Dispatch.call(range, "Copy");
-			if (this.find(pos))
-			{
-				Dispatch textRange = Dispatch.get(selection, "Range").toDispatch();
+			
+//			if (this.find(pos))
+//			{
+				Dispatch textRange = Dispatch.get(this.selection, "Range").toDispatch();
 				Dispatch.call(textRange, "Paste");
-			}
+//			}
 		}
 		catch (Exception e)
 		{
@@ -1117,48 +1117,73 @@ public class DOCWriter
 	{
 		DOCWriter writer = new DOCWriter();
 		writer.createNewDocument();
-		List<String[]> listTable = new ArrayList<String[]>();
-		for (int i = 0; i < 10; i++)
+		
+		
+//		List<String[]> listTable = new ArrayList<String[]>();
+//		for (int i = 0; i < 10; i++)
+//		{
+//			String str[] = new String[4];
+//			for (int j = 0; j < 4; j++)
+//			{
+//				str[j] = String.valueOf(j);
+//			}
+//			listTable.add(str);
+//		}
+//		writer.setFontScale("宋体", false, false, false, "1,1,1,1", 70, 14);
+//		List<String> list = new ArrayList<String>();
+//		list.add("忘记你我做不到");
+//		list.add("不去天涯海角");
+//		list.add("在我身边就好");
+//		list.add("如果爱是痛苦的泥沼");
+//		list.add("让我们一起逃");
+//		list.add("忘记你我做不到");
+//		list.add("不去天涯海角");
+//		list.add("在我身边就好");
+//		list.add("如果爱是痛苦的泥沼");
+//		list.add("让我们一起逃");
+//		writer.moveDown(3);
+//		writer.setAlignment(0);
+//		writer.setTitle("Test");
+//		writer.setTitle("Test2");
+//		writer.insertImage("C:\\Users\\TangLi\\Desktop\\desktop\\13.jpg");
+//		writer.enterDown(1);
+//		writer.insertToDocument(list);
+//		writer.setFontScale("幼圆", true, true, true, "1,1,1,1", 70, 14);
+//		writer.createNewTable(10, 5, 0);
+//		writer.insertToTable(listTable);
+//		writer.setFontScale("华文仿宋", true, true, false, "1,1,1,1", 70, 14);
+//		writer.createNewTable(10, 5, 0);
+//		writer.insertToTable(listTable);
+//		writer.setFontScale("华文新魏", true, false, false, "100,1,1,1", 70, 14);
+//		writer.insertToDocument(list);
+		
+		
+		
+		for(int i = 0;i <10 ;i++)
 		{
-			String str[] = new String[4];
-			for (int j = 0; j < 4; j++)
-			{
-				str[j] = String.valueOf(j);
-			}
-			listTable.add(str);
+			writer.moveEnd();
+			
+//			writer.enterDown(1);
+			writer.copyContentFromAnotherDoc("C:\\Users\\TangLi\\Desktop\\dd.docx");
+//			writer.enterDown(1);
+			
+			writer.tables = Dispatch.get(writer.document, "Tables").toDispatch();
+			System.out.println(Dispatch.get(writer.tables, "Count").getInt());
+			writer.table = Dispatch.call(writer.tables, "Item", new Variant(1+i)).toDispatch();
+			writer.cell = Dispatch.call(writer.table, "Cell", new Variant(2), new Variant(2)).toDispatch();
+			Dispatch.call(writer.cell, "Select");
+			Dispatch.put(writer.selection, "Text", "this is from java");
+			
 		}
-		writer.setFontScale("宋体", false, false, false, "1,1,1,1", 70, 14);
-		List<String> list = new ArrayList<String>();
-		list.add("忘记你我做不到");
-		list.add("不去天涯海角");
-		list.add("在我身边就好");
-		list.add("如果爱是痛苦的泥沼");
-		list.add("让我们一起逃");
-		list.add("忘记你我做不到");
-		list.add("不去天涯海角");
-		list.add("在我身边就好");
-		list.add("如果爱是痛苦的泥沼");
-		list.add("让我们一起逃");
-		writer.moveDown(3);
-		writer.setAlignment(0);
-		writer.setTitle("Test");
-		writer.setTitle("Test2");
-		writer.insertImage("C:\\Users\\TangLi\\Desktop\\desktop\\13.jpg");
-		writer.enterDown(1);
-		writer.insertToDocument(list);
-		writer.setFontScale("幼圆", true, true, true, "1,1,1,1", 70, 14);
-		writer.createNewTable(10, 5, 0);
-		writer.insertToTable(listTable);
-		writer.setFontScale("华文仿宋", true, true, false, "1,1,1,1", 70, 14);
-		writer.createNewTable(10, 5, 0);
-		writer.insertToTable(listTable);
-		writer.setFontScale("华文新魏", true, false, false, "100,1,1,1", 70, 14);
-		writer.insertToDocument(list);
+		
+		
 		// writer.saveAsHtml("C:\\Users\\TangLi\\Desktop\\ww\\aa.html");
 		writer.saveAs("C:\\Users\\TangLi\\Desktop\\desktop\\aa.doc");
 		// writer.close();
 		
-		writer.copyContentFromAnotherDoc("C:\\Users\\TangLi\\Desktop\\dd.docx");
+		
+		
+		
 	}
 
 }

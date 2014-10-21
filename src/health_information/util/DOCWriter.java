@@ -1176,7 +1176,7 @@ public class DOCWriter
 			writer.moveEnd();
 			
 //			writer.enterDown(1);
-			writer.copyContentFromAnotherDoc("C:\\Users\\TangLi\\Desktop\\dd.docx");
+			writer.copyContentFromAnotherDoc("C:\\Users\\TangLi\\Desktop\\desktop\\1-2.docx");
 //			writer.enterDown(1);
 			
 			writer.tables = Dispatch.get(writer.document, "Tables").toDispatch();
@@ -1186,6 +1186,9 @@ public class DOCWriter
 //			writer.cell = Dispatch.call(writer.table, "Cell", new Variant(2), new Variant(2)).toDispatch();
 //			Dispatch.call(writer.cell, "Select");
 //			Dispatch.put(writer.selection, "Text", "this is from java");
+			
+			
+			/*--------------------------------------mynote--------------------------------------*/
 			
 			writer.writeTocell(1,6,"school");
 			writer.writeTocell(2,2,"name");
@@ -1230,14 +1233,165 @@ public class DOCWriter
 			writer.writeTocell(10,7,"绳2年级成绩");
 			writer.writeTocell(10,8,"绳2年级得分");
 			
+			writer.writeTocell(11,2,"1标准");
+			writer.writeTocell(11,4,"2标准");
+			
 			writer.writeTocell(13,2,"绳1年级成绩");
 			writer.writeTocell(13,3,"绳1年级加分");
 			writer.writeTocell(13,5,"绳2年级成绩");
 			writer.writeTocell(13,6,"绳2年级加分");
 			
+			
 			writer.writeTocell(14,2,"1年级总分");
 			writer.writeTocell(14,4,"2年级总分");
+			writer.writeTocell(15,2,"1年级等级");
+			writer.writeTocell(15,4,"2年级等级");
 			
+			
+			
+			
+			/*--------------------------------------mynote--------------------------------------*/
+//			writer.writeTocell(1,6,"school");
+//			writer.writeTocell(2,2,"name");
+//			writer.writeTocell(2,4,"sex");
+//			writer.writeTocell(2,6,"studentCode");
+//			writer.writeTocell(3,2,"className");
+//			writer.writeTocell(3,4,"nativeCode");
+//			writer.writeTocell(3,6,"birthDay");
+//			
+//			writer.writeTocell(6,2,"体重1年级等级");
+//			writer.writeTocell(6,3,"体重1年级成绩");
+//			writer.writeTocell(6,4,"体重1年级得分");
+//			writer.writeTocell(6,6,"体重2年级等级");
+//			writer.writeTocell(6,7,"体重2年级成绩");
+//			writer.writeTocell(6,8,"体重2年级得分");
+//			
+//			writer.writeTocell(7,2,"肺活量1年级等级");
+//			writer.writeTocell(7,3,"肺活量1年级成绩");
+//			writer.writeTocell(7,4,"肺活量1年级得分");
+//			writer.writeTocell(7,6,"肺活量2年级等级");
+//			writer.writeTocell(7,7,"肺活量2年级成绩");
+//			writer.writeTocell(7,8,"肺活量2年级得分");
+//			
+//			writer.writeTocell(8,2,"50m1年级等级");
+//			writer.writeTocell(8,3,"50m1年级成绩");
+//			writer.writeTocell(8,4,"50m1年级得分");
+//			writer.writeTocell(8,6,"50m2年级等级");
+//			writer.writeTocell(8,7,"50m2年级成绩");
+//			writer.writeTocell(8,8,"50m2年级得分");
+//			
+//			writer.writeTocell(9,2,"前屈1年级等级");
+//			writer.writeTocell(9,3,"前屈1年级成绩");
+//			writer.writeTocell(9,4,"前屈1年级得分");
+//			writer.writeTocell(9,6,"前屈2年级等级");
+//			writer.writeTocell(9,7,"前屈2年级成绩");
+//			writer.writeTocell(9,8,"前屈2年级得分");
+//			
+//			writer.writeTocell(10,2,"绳1年级等级");
+//			writer.writeTocell(10,3,"绳1年级成绩");
+//			writer.writeTocell(10,4,"绳1年级得分");
+//			writer.writeTocell(10,6,"绳2年级等级");
+//			writer.writeTocell(10,7,"绳2年级成绩");
+//			writer.writeTocell(10,8,"绳2年级得分");
+//			
+//			writer.writeTocell(11,2,"仰卧1年级等级");
+//			writer.writeTocell(11,3,"仰卧1年级成绩");
+//			writer.writeTocell(11,4,"仰卧1年级得分");
+//			writer.writeTocell(11,6,"仰卧2年级等级");
+//			writer.writeTocell(11,7,"仰卧2年级成绩");
+//			writer.writeTocell(11,8,"仰卧2年级得分");
+//			
+//			writer.writeTocell(12,2,"1标准");
+//			writer.writeTocell(12,4,"2标准");
+//			
+//			writer.writeTocell(14,2,"绳1年级成绩");
+//			writer.writeTocell(14,3,"绳1年级加分");
+//			writer.writeTocell(14,5,"绳2年级成绩");
+//			writer.writeTocell(14,6,"绳2年级加分");
+//			
+//			
+//			writer.writeTocell(15,2,"1年级总分");
+//			writer.writeTocell(15,4,"2年级总分");
+//			writer.writeTocell(16,2,"1年级等级");
+//			writer.writeTocell(16,4,"2年级等级");
+			
+			
+			/*--------------------------------------mynote--------------------------------------*/			
+			
+//			writer.writeTocell(1,3,"school");
+//			writer.writeTocell(2,2,"name");
+//			writer.writeTocell(2,4,"sex");
+//			writer.writeTocell(2,6,"studentCode");
+//			writer.writeTocell(3,2,"className");
+//			writer.writeTocell(3,4,"nativeCode");
+//			writer.writeTocell(3,6,"birthDay");
+//			
+//			writer.writeTocell(6,2,"体重1年级等级");
+//			writer.writeTocell(6,3,"体重1年级成绩");
+//			writer.writeTocell(6,4,"体重1年级得分");
+//			writer.writeTocell(6,5,"体重2年级等级");
+//			writer.writeTocell(6,6,"体重2年级成绩");
+//			writer.writeTocell(6,7,"体重2年级得分");
+//			
+//			writer.writeTocell(7,2,"肺活量1年级等级");
+//			writer.writeTocell(7,3,"肺活量1年级成绩");
+//			writer.writeTocell(7,4,"肺活量1年级得分");
+//			writer.writeTocell(7,5,"肺活量2年级等级");
+//			writer.writeTocell(7,6,"肺活量2年级成绩");
+//			writer.writeTocell(7,7,"肺活量2年级得分");
+//			
+//			writer.writeTocell(8,2,"50m1年级等级");
+//			writer.writeTocell(8,3,"50m1年级成绩");
+//			writer.writeTocell(8,4,"50m1年级得分");
+//			writer.writeTocell(8,5,"50m2年级等级");
+//			writer.writeTocell(8,6,"50m2年级成绩");
+//			writer.writeTocell(8,7,"50m2年级得分");
+//			
+//			writer.writeTocell(9,2,"前屈1年级等级");
+//			writer.writeTocell(9,3,"前屈1年级成绩");
+//			writer.writeTocell(9,4,"前屈1年级得分");
+//			writer.writeTocell(9,5,"前屈2年级等级");
+//			writer.writeTocell(9,6,"前屈2年级成绩");
+//			writer.writeTocell(9,7,"前屈2年级得分");
+//			
+//			writer.writeTocell(10,2,"绳1年级等级");
+//			writer.writeTocell(10,3,"绳1年级成绩");
+//			writer.writeTocell(10,4,"绳1年级得分");
+//			writer.writeTocell(10,5,"绳2年级等级");
+//			writer.writeTocell(10,6,"绳2年级成绩");
+//			writer.writeTocell(10,7,"绳2年级得分");
+//			
+//			writer.writeTocell(11,2,"仰卧1年级等级");
+//			writer.writeTocell(11,3,"仰卧1年级成绩");
+//			writer.writeTocell(11,4,"仰卧1年级得分");
+//			writer.writeTocell(11,5,"仰卧2年级等级");
+//			writer.writeTocell(11,6,"仰卧2年级成绩");
+//			writer.writeTocell(11,7,"仰卧2年级得分");
+//			
+//			writer.writeTocell(12,2,"耐力1年级等级");
+//			writer.writeTocell(12,3,"耐力1年级成绩");
+//			writer.writeTocell(12,4,"耐力1年级得分");
+//			writer.writeTocell(12,5,"耐力2年级等级");
+//			writer.writeTocell(12,6,"耐力2年级成绩");
+//			writer.writeTocell(12,7,"耐力2年级得分");
+//			
+//			writer.writeTocell(13,2,"1标准分");
+//			writer.writeTocell(13,3,"2标准分");
+//			
+//			writer.writeTocell(15,2,"绳1年级成绩");
+//			writer.writeTocell(15,3,"绳1年级加分");
+//			writer.writeTocell(15,4,"绳2年级成绩");
+//			writer.writeTocell(15,5,"绳2年级加分");
+//			
+//			
+//			writer.writeTocell(16,2,"1年级总分");
+//			writer.writeTocell(16,3,"2年级总分");
+//			writer.writeTocell(17,2,"1年级等级");
+//			writer.writeTocell(17,3,"2年级等级");
+//			
+//			
+//			writer.writeTocell(6,8,"xx");
+//			writer.writeTocell(6,9,"xx");
 			
 			
 		}

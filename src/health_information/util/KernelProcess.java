@@ -35,14 +35,14 @@ public class KernelProcess
 		while(beginIndex<students.size())
 		{
 			/*--------------------------------------获取一组的索引--------------------------------------*/
-			String grade = identifyGrade(students.get(beginIndex).className);
-			String sex = identifySex(students.get(beginIndex).sex);
+			String grade = Common.identifyGrade(students.get(beginIndex).className);
+			String sex = Common.identifySex(students.get(beginIndex).sex);
 			
 			
 			int count =1;
 			for(endIndex = beginIndex+1 ;endIndex <students.size();endIndex++)
 			{
-				if(identifyGrade(students.get(endIndex).className).equals(grade) && identifySex(students.get(endIndex).sex).equals(sex))
+				if(Common.identifyGrade(students.get(endIndex).className).equals(grade) && Common.identifySex(students.get(endIndex).sex).equals(sex))
 					count++;
 				else
 					break;
@@ -106,16 +106,16 @@ public class KernelProcess
 			{
 				try
 				{
-					int index = Integer.parseInt(identifyGrade(o1.className))-Integer.parseInt(identifyGrade(o2.className));
+					int index = Integer.parseInt(Common.identifyGrade(o1.className))-Integer.parseInt(Common.identifyGrade(o2.className));
 					if(index>0)
 						return 1;
 					else if(index<0)
 						return -1;
 					else
 					{
-						if(identifySex(o1.sex).equals(identifySex(o2.sex)))
+						if(Common.identifySex(o1.sex).equals(Common.identifySex(o2.sex)))
 							return 0;
-						else if(identifySex(o1.sex).equals(Standard.FEMALE))
+						else if(Common.identifySex(o1.sex).equals(Standard.FEMALE))
 							return 1;
 						else
 							return -1;
@@ -129,29 +129,6 @@ public class KernelProcess
 		});
 	}
 	
-	public static String identifyGrade(String gradeString)
-	{
-		if(gradeString.contains(Standard.GRADE1))
-			return Standard.GRADE1;
-		else if(gradeString.contains(Standard.GRADE2))
-			return Standard.GRADE2;
-		else if(gradeString.contains(Standard.GRADE3))
-			return Standard.GRADE3;
-		else if(gradeString.contains(Standard.GRADE4))
-			return Standard.GRADE4;
-		else if(gradeString.contains(Standard.GRADE5))
-			return Standard.GRADE5;
-		else
-			return Standard.GRADE6;
-	}
-	
-	public static String identifySex(String sex)
-	{
-		if(sex.contains(Standard.FEMALE))
-			return Standard.FEMALE;
-		else
-			return Standard.MALE;
-	}
 	
 	
 	

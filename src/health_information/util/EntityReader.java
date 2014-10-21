@@ -25,7 +25,7 @@ public class EntityReader implements IEntityReader
 	@Override
 	public List<Student> readIn(String filePath)
 	{
-		// return fakeData();
+//		 return fakeData();
 
 		return fromExcel(filePath);
 	}
@@ -46,7 +46,7 @@ public class EntityReader implements IEntityReader
 		grade.add("2013");
 		grade.add("2014");
 		Random rand = new Random();
-		for (int i = 0; i < 1600; i++)
+		for (int i = 0; i < 200; i++)
 		{
 			list.add(new Student("classNO" + i, grade.get(rand.nextInt(100) % 6) + "className" + i, "code" + i, "nativeCode", "name" + i, sex.get(rand.nextInt(100) % 2), "birthDay" + i, "origin" + i, "idcard" + i, "address" + i));
 

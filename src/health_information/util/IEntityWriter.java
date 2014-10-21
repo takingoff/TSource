@@ -14,5 +14,5 @@ import java.util.List;
  */
 public interface IEntityWriter
 {
-	public void writeToWord(List<Student> entityList);
+	public void writeOut(List<Student> entityList);
 }

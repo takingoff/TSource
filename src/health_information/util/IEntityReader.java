@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface IEntityReader
 {
-	public List<Student> read(String filePath);
+	public List<Student> readIn(String filePath);
 	
 }

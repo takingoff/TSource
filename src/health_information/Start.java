@@ -23,14 +23,14 @@ public class Start
 	public static void main(String[] arg)
 	{
 		IEntityReader reader = new EntityReader();
-		List<Student> students = reader.read("C:\\Users\\TangLi\\Desktop\\学生基本信息模版.xls");
+		List<Student> students = reader.readIn("C:\\Users\\TangLi\\Desktop\\学生基本信息模版.xls");
 			
 		///..process
 		KernelProcess.process(students);
 		
 		
 		IEntityWriter writer = new EntityWriter();
-		writer.writeToWord(students);
+		writer.writeOut(students);
 		
 	}
 }

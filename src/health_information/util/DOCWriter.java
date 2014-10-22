@@ -17,6 +17,35 @@ import com.jacob.com.Variant;
  */
 public class DOCWriter
 {
+	
+	
+//	word
+//	selection
+//			range
+//			MoveXXXX
+//			TypeParagraph(回车)
+//			HomeKey 文件首位置。
+//			Find 查找器。
+//				Execute 执行查找
+//			Text 文本属性
+//	documents
+//		document
+//			pageSetup
+//			tables
+//				table
+//					cols
+//						Count
+//						clo
+//							cell
+//								Merge
+//								Select
+//					rows
+//						Count
+//						row
+//							cell
+//								Merge
+//								Select
+	
 
 	/** 日志记录器 */
 	static private Logger logger = Logger.getLogger(DOCWriter.class);

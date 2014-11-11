@@ -6,11 +6,16 @@ package chaos;
 
 import java.io.File;
 
+import chaos.chaosin.ChaosIn;
+
 /**
  * @author TangLi 2014年11月10日上午11:12:41
  */
 public class Chaos
 {
+	
+	static int num = 0;
+	
 	public static void main(String[] ar) throws Exception
 	{
 
@@ -25,5 +30,20 @@ public class Chaos
 		
 		
 		System.out.println(Chaos.class.getResource("").toString());
+		
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("sss");
+		System.out.println(sb.toString());
+		
+		
 	}
+	
+	protected void protectedFun()
+	{
+		ChaosIn c = new ChaosIn();
+		System.out.println(c);
+	}
+	
+	void friendlyFun(){}
 }

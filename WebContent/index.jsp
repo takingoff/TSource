@@ -150,6 +150,7 @@
 
 
 <body>
+	<a href="http://info.flagcounter.com/isGH"><img src="http://s11.flagcounter.com/count/isGH/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_6/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a>
 	<p>this is for test</p>
 	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 </body>

@@ -18,7 +18,6 @@ public class Chaos
 	
 	public static void main(String[] ar) throws Exception
 	{
-
 		System.out.println(System.getProperty("user.name"));// 
 		System.out.println(System.getProperty("user.home"));// 。
 		System.out.println(System.getProperty("java.home"));// /当前项目路径。

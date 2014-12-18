@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script src="hightCharts/js/jquery-1.9.1.js"></script>
 <script src="hightCharts/js/highcharts.js"></script>
@@ -10,33 +10,6 @@
 	$(function()
 	{
 		drawer();
-		prototypeTest();
-		
-		var goo = "old";
-		hoisting();///这个函数中包含了局部变量goo因此不能改变全局变量goo
-		function hoisting()
-		{
-			if (true)
-				goo = "new";
-			else
-				var goo = "local";
-		}
-// 		alert(goo);
-
-// 		+function(i){alert(i)}("this is ");
-
-
-		function add(a,b) 
-		{ 
-		    alert(a+b); 
-		} 
-		function sub(a,b) 
-		{ 
-		    alert(a-b); 
-		} 
-		add.call(sub,3,1);
-		
-// 		alert(add.toString());
 		
 	});
 
@@ -58,37 +31,6 @@
 		
 	}
 	
-	function prototypeTest()
-	{
-		function foo()
-		{
-			this.foofunctiontype = "small";
-		}
-		;
-
-		foo.fooName = "TL";
-		foo.prototype.fooPrototypeage = 21;
-
-		var bar = new foo();
-		bar.name = "tangli";
-		bar.jolia = "jolia";
-		console.info('name' in bar);
-		console.info('foofunctiontype' in bar);
-		console.info('fooPrototypeage' in bar);
-		console.info('fooName' in bar);
-		console.info(bar.hasOwnProperty("name"));
-		console.info(bar.hasOwnProperty("foofunctiontype"));
-		console.info(bar.hasOwnProperty("fooPrototypeage"));
-		console.info(bar.hasOwnProperty("fooName"));
-		delete bar.name;
-		console.info('name' in bar);
-		console.info(bar.hasOwnProperty("name"));
-
-		var tem = function myFun()
-		{
-			this.Tnam = "tNam";
-		};
-	}
 
 	function drawer()
 	{
@@ -146,7 +88,6 @@
 	}
 </script>
 </head>
-
 
 
 <body>

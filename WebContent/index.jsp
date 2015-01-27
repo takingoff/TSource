@@ -3,9 +3,9 @@
 <html>
 <head>
 <title>Insert title here</title>
-<script src="hightCharts/js/jquery-1.9.1.js"></script>
-<script src="hightCharts/js/highcharts.js"></script>
-<script src="hightCharts/js/modules/exporting.js"></script>
+<script src="static/hightCharts/js/jquery-1.9.1.js"></script>
+<script src="static/hightCharts/js/highcharts.js"></script>
+<script src="static/hightCharts/js/modules/exporting.js"></script>
 <script>
 	$(function()
 	{

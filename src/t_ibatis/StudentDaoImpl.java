@@ -25,7 +25,7 @@ public class StudentDaoImpl
 	{
 		try
 		{
-			Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
+			Reader reader = Resources.getResourceAsReader("ibatis/SqlMapConfig.xml");
 			sqlMapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
 			reader.close();
 		}

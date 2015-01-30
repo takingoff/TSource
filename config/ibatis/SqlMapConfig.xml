@@ -3,7 +3,7 @@
 "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
 	<!-- 引用JDBC属性的配置文件 -->
-	<properties resource="SqlMap.properties" />
+	<properties resource="ibatis/SqlMap.properties" />
 	<!-- 使用JDBC的事务管理 -->
 	<transactionManager type="JDBC">
 		<!-- 数据源 -->
@@ -15,5 +15,5 @@
 		</dataSource>
 	</transactionManager>
 	<!-- 这里可以写多个实体的映射文件 -->
-	<sqlMap resource="Student.xml" />
+	<sqlMap resource="ibatis/Student.xml" />
 </sqlMapConfig>

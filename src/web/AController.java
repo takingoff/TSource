@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 2015年1月30日上午9:57:32
  */
 @Controller
-@RequestMapping(value="Acontroller")
+@RequestMapping(value="/aController")
 public class AController
 {
 
-	@RequestMapping(value="getText")
+	@RequestMapping(value="/getText")
 	public String  getText(String requestVal)
 	{
 		

@@ -25,7 +25,7 @@ public class ShiroTest
 	{
 		// Using the IniSecurityManagerFactory, which will use the an INI file
 		// as the security file.
-		Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("shiro.ini");
+		Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("config/shiro.ini");
 
 		// Setting up the SecurityManager...
 		org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();

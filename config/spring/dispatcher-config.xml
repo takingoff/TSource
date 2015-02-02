@@ -27,47 +27,42 @@
 		</property>
 	</bean>
 
-
 	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-		<!-- 定义拦截器 在request产生时拦截 -->
-		<!-- 必须配置的adapter 必须设置编码，否则可能会有乱码产生 -->
-		<bean
-			class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-			<property name="messageConverters">
-				<list>
-					<bean
-						class="org.springframework.http.converter.StringHttpMessageConverter">
-						<property name="supportedMediaTypes">
-							<list>
-								<value>text/plain;charset=UTF-8</value>
-							</list>
-						</property>
-					</bean>
-					<bean
-						class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-						<property name="supportedMediaTypes">
-							<list>
-								<!--返回字符串格式json -->
-								<value>application/json;charset=UTF-8</value>
-								<!-- <value>text/html;charset=UTF-8</value> -->
-							</list>
-						</property>
-					</bean>
-					<bean class="org.springframework.http.converter.FormHttpMessageConverter">
-						<property name="supportedMediaTypes">
-							<list>
-								<!-- 表单数据处理 -->
-								<value> application/x-www-form-urlencoded;charset=UTF-8</value>
-							</list>
-						</property>
-					</bean>
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<!-- 定义拦截器 在request产生时拦截 -->
+	<!-- 必须配置的adapter 必须设置编码，否则可能会有乱码产生 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<!--返回字符串格式json -->
+							<value>application/json;charset=UTF-8</value>
+							<!-- <value>text/html;charset=UTF-8</value> -->
+						</list>
+					</property>
+				</bean>
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<!-- 表单数据处理 -->
+							<value> application/x-www-form-urlencoded;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
 
-				</list>
-			</property>
-
-		</bean>
-
-
-
+			</list>
+		</property>
+	</bean>
 </beans>

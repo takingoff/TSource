@@ -32,17 +32,13 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-		</dependency>
+
+		<!-- excel word -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.10.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.textmining</groupId>
 			<artifactId>tm-extractors</artifactId>
@@ -60,13 +56,13 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.10.1</version>
 		</dependency>
-
+		<!-- log -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
+		<!-- tika -->
 		<dependency>
 			<groupId>org.apache.tika</groupId>
 			<artifactId>tika-parsers</artifactId>
@@ -78,7 +74,7 @@
 			<version>1.6</version>
 		</dependency>
 
-
+		<!-- ibatis -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.apache.ibatis</groupId> -->
 		<!-- <artifactId>ibatis-sqlmap</artifactId> -->
@@ -91,13 +87,13 @@
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>2.3.4.726</version>
 		</dependency>
-
+		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.27</version>
 		</dependency>
-
+		<!-- shiro -->
 
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -105,7 +101,12 @@
 			<version>1.2.3</version>
 		</dependency>
 
-
+		<!-- javax -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -119,18 +120,34 @@
 		</dependency>
 
 
+		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 
-
+		<!-- page decorator -->
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+
+		<!-- apache common -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+
 
 	</dependencies>
 </project>

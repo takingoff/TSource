@@ -7,7 +7,17 @@
 
 
 <script type="text/javascript">
-	
+	$(function(){
+		
+		$.ajax({
+			dataType:"json",
+			success:function(data){
+				alert(data);
+			},
+			url:"${ctx}/testController/getText.do",
+			
+		});
+	});
 </script>
 
 </head>
@@ -79,7 +89,7 @@
 						</div> <button type="submit" class="btn btn-default">Submit</button>
 					</form>
 					
-					<form role="form" action="${ctx}/aController/getText.do">
+					<form role="form" action="${ctx}/testController/getText.do">
 						<div class="form-group">
 							 <label for="textd">Email address</label><input type="text" name="requestVal" class="form-control" id="textd" />
 						</div>

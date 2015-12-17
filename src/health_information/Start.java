@@ -12,6 +12,8 @@ import health_information.util.IEntityReader;
 import health_information.util.IEntityWriter;
 import health_information.util.KernelProcess;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,10 +22,17 @@ import java.util.List;
  */
 public class Start
 {
-	public static void main(String[] arg)
+	public static void main(String[] arg) throws IOException
 	{
+		
+		
 		IEntityReader reader = new EntityReader();
-		List<Student> students = reader.readIn("C:\\Users\\TangLi\\Desktop\\desktop\\学生基本信息模版.xls");
+		
+		String projectPath = new File("").getCanonicalPath();
+		List<Student> students = reader.readIn(projectPath+"\\desktop\\新健康标准\\学生基本信息模版(1).xls");
+		
+		System.setProperty("java.class.path", System.getProperty("java.class.path")+";"+projectPath+"\\desktop\\jacob-1.18-M2-x86.dll");
+		System.out.println(System.getProperty("java.class.path"));
 			
 		///..process
 		KernelProcess.process(students);

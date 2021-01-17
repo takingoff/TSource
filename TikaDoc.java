@@ -20,6 +20,7 @@ import org.apache.tika.sax.BodyContentHandler;
 public class TikaDoc
 {
 
+	// svn commit to git hub test ..
 	public static void main(String[] ar) throws Exception
 	{
 		BodyContentHandler handler = new BodyContentHandler();
